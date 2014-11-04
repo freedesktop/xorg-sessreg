@@ -67,7 +67,7 @@ AC_CHECK_TYPES([
 AC_CHECK_FUNCS([pututline updwtmpx utmpxname])
 
 # Obtain compiler/linker options for depedencies
-PKG_CHECK_MODULES(SESSREG, xproto)
+PKG_CHECK_MODULES(SESSREG, [xproto >= 7.0.25])
 
 AC_CONFIG_FILES([
 	Makefile
