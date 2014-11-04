@@ -499,6 +499,7 @@ set_utmpx (struct utmpx *u, const char *line, const char *user,
 	static const char letters[] =
 	       "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
+	memset (u, 0, sizeof (*u));
 	if (line)
 	{
 		if(strcmp(line, ":0") == 0)
