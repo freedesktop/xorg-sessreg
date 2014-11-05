@@ -217,11 +217,19 @@ main (int argc, char **argv)
 			wtmp_file = getstring (&argv, &wflag);
 			if (!strcmp (wtmp_file, "none"))
 				wtmp_none = 1;
+#if defined(USE_UTMPX) && defined(HAVE_UPDWTMPX)
+			else
+				wtmpx_file = wtmp_file;
+#endif
 			break;
 		case 'u':
 			utmp_file = getstring (&argv, &uflag);
 			if (!strcmp (utmp_file, "none"))
 				utmp_none = 1;
+#if defined(USE_UTMPX) && defined(HAVE_UTMPXNAME)
+			else
+				utmpx_file = utmp_file;
+#endif
 			break;
 #ifdef USE_LASTLOG
 		case 'L':
