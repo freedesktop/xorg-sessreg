@@ -54,9 +54,11 @@
 #include <time.h>
 
 /* Prefer POSIX standard utmpx interfaces if present, otherwise use utmp */
-#if defined(HAVE_UTMP_H) && !defined(HAVE_UTMPX_H)
+#ifdef HAVE_UTMP_H
 # include <utmp.h>
-# define USE_UTMP
+# ifndef HAVE_UTMPX_H
+#  define USE_UTMP
+# endif
 #endif
 
 #ifdef HAVE_UTMPX_H
